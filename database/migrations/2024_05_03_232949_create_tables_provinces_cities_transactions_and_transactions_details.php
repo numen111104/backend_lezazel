@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('address');
             $table->bigInteger('grand_total');
             $table->string('reference')->nullable();
-            $table->string('status', array("UNPAID", "SUCCESS", "EXPIRED", "CANCELLED"));
+            $table->enum('status', array("UNPAID", "SUCCESS", "EXPIRED", "CANCELLED"));
             $table->timestamps();
         });
 
