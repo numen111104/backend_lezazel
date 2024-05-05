@@ -16,4 +16,8 @@ class Province extends Model
     public function cities(){
         return $this->hasMany(City::class);
     }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 }
