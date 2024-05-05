@@ -6,6 +6,9 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserTableSeeder;
+use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\CitiesTableSeeder;
+use Database\Seeders\ProvincesTableSeeder;
 use Database\Seeders\PermissionTableSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,8 +20,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        $this->call(RolesTableSeeder::class);
-        $this->call(PermissionTableSeeder::class);
-        $this->call(UserTableSeeder::class);
+        // $this->call(RolesTableSeeder::class);
+        // $this->call(PermissionTableSeeder::class);
+        // $this->call(UserTableSeeder::class);
+
+        //city and province
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(CitiesTableSeeder::class);
     }
 }
