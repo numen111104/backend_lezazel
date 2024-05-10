@@ -35,20 +35,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|unique:categories'
         ]);
         $category = new Category();
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/category/', $filename);
-            $category->image = $filename;
-        }
         $category->save();
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
@@ -78,22 +68,9 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $category = Category::findOrFail($id);
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/category/', $filename);
-            $category->image = $filename;
-            //delete the old image
-            if (File::exists('uploads/category/' . $category->image)) {
-                File::delete('uploads/category/' . $category->image);
-            }
-        }
         $category->save();
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
@@ -104,15 +81,7 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::findOrFail($id);
-
-        // Hapus gambar dari storage jika ada
-        if (Storage::disk('public')->exists('uploads/category/' . $category->image)) {
-            Storage::disk('public')->delete('uploads/category/' . $category->image);
-        }
-
-        // Hapus kategori dari database
         $category->delete();
-
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }

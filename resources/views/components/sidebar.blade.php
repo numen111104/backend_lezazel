@@ -13,24 +13,31 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="nav-item dropdown {{ $type_menu === 'dashboard' || Request::is('users.*') || Request::is('categories.*') || Request::is('products.*') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ $type_menu === 'dashboard' ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
-                    <li class='{{ Request::is('home') ? 'active' : '' }}'>
-                        <a class="nav-link" href="{{ url('home') }}">Home</a>
+                    <li class='{{ request()->path() === 'dashboard/home' ? 'active' : '' }}'>
+                        <a class="nav-link" href="{{ url('dashboard/home') }}">Home</a>
                     </li>
-                    <li class="{{ request()->segment(1) === 'users' ? 'active' : '' }}">
+                    <li class="{{ request()->path() === 'dashboard/users' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                     </li>
-                       {{-- Category --}}
-                    <li class="{{ request()->segment(1) === 'categories' ? 'active' : '' }}">
+                    {{-- Category --}}
+                    <li class="{{ request()->path() === 'dashboard/categories' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                     </li>
                     {{-- Product --}}
-                    <li class="{{ request()->segment(1) === 'products' ? 'active' : '' }}">
+                    <li class="{{ request()->path() === 'dashboard/products' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                     </li>
+                    <li class="{{ request()->path() === 'dashboard/galleries' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('galleries.index') }}">Galleries</a>
+                    </li>
+                    <li class="{{ request()->path() === 'dashboard/transactions' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('transactions.index') }}">Transactions</a>
+                    </li>
                 </ul>
+                
             </li>
         </ul>
 

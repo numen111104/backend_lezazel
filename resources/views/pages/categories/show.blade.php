@@ -18,7 +18,7 @@
                     <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1">
                         <div class="card card-primary">
                             <div class="row m-0">
-                                <div class="col-12 col-md-12 col-lg-5 p-0">
+                                <div class="col-12 col-md-12 col-lg-12 p-0">
                                     <div class="card-header text-center">
                                         <h4>Category Info</h4>
                                     </div>
@@ -27,11 +27,6 @@
                                             <label for="name">Category Name</label>
                                             <input id="name" type="text" class="form-control"
                                                 value="{{ $category->name }}" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="slug">Slug</label>
-                                            <input id="slug" type="text" class="form-control"
-                                                value="{{ $category->slug }}" readonly>
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
@@ -45,14 +40,6 @@
                                             <button type="submit" class="btn btn-danger"
                                                 onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
                                         </form>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-12 col-lg-7 p-0">
-                                    <div class="card-header text-center">
-                                        <h4>Category Image</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <img src="{{ $category->image }}" alt="Category Image" class="img-fluid">
                                     </div>
                                 </div>
                             </div>

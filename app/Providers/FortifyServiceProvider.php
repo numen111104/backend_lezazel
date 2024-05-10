@@ -50,5 +50,9 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
            return view('pages.auth.auth-register'); 
         });
+
+        //redirect to /web after login
+        Fortify::redirects('web');
+
     }
 }

@@ -56,38 +56,55 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    name="address" value="{{ old('address', $user->address) }}">
-                                @error('address')
+                                <label>Username</label>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    name="username" value="{{ old('username', $user->username) }}">
+                                @error('username')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="row">
-                                <div class="form-group col-6">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        name="password">
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group col-6">
-                                    <label>Password Confirmation</label>
-                                    <input type="password" class="form-control" name="password_confirmation">
-                                </div>
+                            <div class="form-group">
+                                <label>Roles</label>
+                                <select class="form-control @error('roles') is-invalid @enderror" name="roles">
+                                <option value="ADMIN" {{ old('roles', $user->roles) == 'admin' ? 'selected' : '' }}>
+                                        Admin</option>
+                                    <option value="USER" {{ old('roles', $user->roles) == 'user' ? 'selected' : '' }}>
+                                        User</option>
+                                </select>
+                                @error('roles')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
-                        <div class="card-footer text-right">
-                            <button class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label>Password</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Password Confirmation</label>
+                        <input type="password" class="form-control" name="password_confirmation">
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="card-footer text-right">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+    </div>
+    </div>
+    </section>
     </div>
 @endsection

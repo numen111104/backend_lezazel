@@ -2,47 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
-        'category_id',
-        'title',
-        'slug',
-        'description',
-        'discount',
-        'images',
-        'price',
-        'stock',
-    ];
+        'name', 'description', 'price', 'category_id', 'tags'
+    ];    
 
+    public function galleries()
+    {
+        return $this->hasMany(ProductGallery::class, 'product_id', 'id');
+    }
+    
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
-
-    public function getImagesAttribute($value)
-    {
-        // Decode JSON array of image paths
-        $imagePaths = json_decode($value, true);
-    
-        // Create array of image URLs
-        $imageURLs = [];
-        foreach ($imagePaths as $path) {
-            // Ubah path relatif menjadi URL yang valid
-            $imageURLs[] = asset($path);
-        }
-    
-        return $imageURLs;
-    }
-    
 }

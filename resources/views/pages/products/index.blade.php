@@ -16,7 +16,7 @@
                     <a href="{{ route('products.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ route('home.index') }}">Dashboard</a></div>
                     <div class="breadcrumb-item">Products</div>
                 </div>
             </div>
@@ -42,61 +42,22 @@
                                     <div class="table-responsive">
                                         <table class="table-striped table">
                                             <tr>
-                                                <th>Title</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
                                                 <th>Description</th>
-                                                <th>Category</th>
-                                                <th>Images</th>
-                                                <th>Discount</th>
                                                 <th>Price</th>
-                                                <th>Stock</th>
+                                                <th>Category</th>
+                                                <th>Tags</th>
                                                 <th>Action</th>
                                             </tr>
                                             @foreach ($product as $prod)
                                                 <tr>
-                                                    <td>{{ $prod->title }}</td>
+                                                    <td>{{ $prod->id }}</td>
+                                                    <td>{{ $prod->name }}</td>
                                                     <td>{{ $prod->description }}</td>
-                                                    <td>{{ $prod->category->name }}</td>
-                                                    <td>
-                                                        <div id="carouselExampleIndicators{{ $prod->id }}"
-                                                            class="carousel slide" data-ride="carousel">
-                                                            <ol class="carousel-indicators">
-                                                                @foreach ($prod->images as $key => $image)
-                                                                    <li data-target="#carouselExampleIndicators{{ $prod->id }}"
-                                                                        data-slide-to="{{ $key }}"
-                                                                        class="{{ $key == 0 ? 'active' : '' }}"></li>
-                                                                @endforeach
-                                                            </ol>
-                                                            <div class="carousel-inner">
-                                                                @foreach ($prod->images as $key => $image)
-                                                                    <div
-                                                                        class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                                                        <img class="d-block w-100"
-                                                                            src="{{ $image }}"
-                                                                            alt="Slide {{ $key + 1 }}"
-                                                                            height="100"
-                                                                            width="100">
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                            <a class="carousel-control-prev"
-                                                                href="#carouselExampleIndicators{{ $prod->id }}"
-                                                                role="button" data-slide="prev">
-                                                                <span class="carousel-control-prev-icon"
-                                                                    aria-hidden="true"></span>
-                                                                <span class="sr-only">Previous</span>
-                                                            </a>
-                                                            <a class="carousel-control-next"
-                                                                href="#carouselExampleIndicators{{ $prod->id }}"
-                                                                role="button" data-slide="next">
-                                                                <span class="carousel-control-next-icon"
-                                                                    aria-hidden="true"></span>
-                                                                <span class="sr-only">Next</span>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $prod->discount }}</td>
                                                     <td>{{ $prod->price }}</td>
-                                                    <td>{{ $prod->stock }}</td>
+                                                    <td>{{ $prod->category->name }}</td>
+                                                    <td>{{ $prod->tags }}</td>
                                                     <td>
                                                         <div class="d-flex justify-content-center">
                                                             <a href='{{ route('products.edit', $prod->id) }}'
@@ -129,7 +90,6 @@
                                     <p>No products available.</p>
                                 @endif
                             </div>
-
                         </div>
                     </div>
                 </div>

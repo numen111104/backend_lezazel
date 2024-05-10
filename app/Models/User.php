@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,9 +20,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'address',
         'phone',
+        'username',
+        'roles',
+        'password',
     ];
 
     /**
@@ -53,5 +53,14 @@ class User extends Authenticatable
         return $this->getAllPermissions()->mapWithKeys(function($permi){
             return [$permi['name'] => true];
         });
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'user_id', 'id');
+    }
+
+    public function isAdmin(){
+        return $this->roles == 'ADMIN';
     }
 }

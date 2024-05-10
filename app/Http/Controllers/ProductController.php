@@ -36,36 +36,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'price' => 'required|integer',
-            'stock' => 'required|integer|max:255',
-            'discount' => 'required|integer|max:255',
-            'images' => 'required|array|min:3',
-            'images.*' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'required|string|max:255',
+            
         ]);
     
         $product = new Product;
-        $product->category_id = $request->category_id;
-        $product->title = $request->title;
-        $product->slug = Str::slug($request->title);
+        $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->discount = $request->discount;
-    
-        if ($request->hasFile('images')) {
-            $imagePaths = [];
-            foreach ($request->file('images') as $image) {
-                $i = rand(0, 9912);
-                $filename = 'uploads/product/'. $i . '-' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-                $image->move('uploads/product', $filename);
-                $imagePaths[] = $filename;
-            }
-            // Gunakan array_merge untuk menggabungkan array yang ada dengan array baru
-            $product->images = json_encode($imagePaths);
-        }
+        $product->category_id = $request->category_id;
+        $product->tags = $request->tags;
         $product->save();
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
@@ -93,43 +77,27 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'price' => 'required|integer',
-            'stock' => 'required|integer|max:255',
-            'discount' => 'required|integer|max:255',
-            'images' => 'array|min:3',
-            'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'required|string|max:255',
         ]);
+    
         $product = Product::findOrFail($id);
-        $product->category_id = $request->category_id;
-        $product->title = $request->title;
-        $product->slug = Str::slug($request->title);
+        $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->discount = $request->discount;
-
-        if ($request->hasFile('images')) {
-            $imagePaths = [];
-            foreach ($request->file('images') as $image) {
-                $i = rand(0, 9912);
-                $filename = 'uploads/product/'. $i . '-' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-                 $image->move('uploads/product', $filename);
-                $imagePaths[] = $filename;
-            }
-            // Gunakan array_merge untuk menggabungkan array yang ada dengan array baru
-            $product->images = json_encode($imagePaths);
-        }
-
+        $product->category_id = $request->category_id;
+        $product->tags = $request->tags;
         $product->save();
+    
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */

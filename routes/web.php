@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\HomeDashboardController;
+use App\Http\Controllers\ProductGalleryController;
 
-Route::get('/', function () {
-    return view('pages.auth.auth-login');
-});
+Route::resource('/', LandingPageController::class);
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('pages.dashboard', ["type_menu" => "dashboard"]);
-    })->name('home');
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+    Route::resource('home', HomeDashboardController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('galleries', ProductGalleryController::class);
+    Route::resource('transactions', TransactionController::class);
 });

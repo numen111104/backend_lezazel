@@ -21,7 +21,7 @@
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
                         <div class="card-header">
-                            <h4>Input Text</h4>
+                            <h4>Add User</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -80,10 +80,22 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    name="address" value="{{ old('address') }}">
-                                @error('address')
+                                <label>Username</label>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    name="username" value="{{ old('username') }}">
+                                @error('username')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Roles</label>
+                                <select class="form-control @error('roles') is-invalid @enderror" name="roles">
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="USER">User</option>
+                                </select>
+                                @error('roles')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

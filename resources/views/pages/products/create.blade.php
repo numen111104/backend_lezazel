@@ -49,10 +49,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-6">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                        name="title" value="{{ old('title') }}">
-                                    @error('title')
+                                    <label>Name</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        name="name" value="{{ old('name') }}">
+                                    @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -74,29 +74,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-6">
-                                    <label>Stock</label>
-                                    <input type="number" class="form-control @error('stock') is-invalid @enderror"
-                                        name="stock" value="{{ old('stock') }}">
-                                    @error('stock')
+                                    <label>Tags</label>
+                                    <input type="text" class="form-control @error('tags') is-invalid @enderror"
+                                        name="tags" value="{{ old('tags') }}">
+                                    @error('tags')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Discount (%)</label>
-                                <input type="number" class="form-control @error('discount') is-invalid @enderror"
-                                    name="discount" value="{{ old('discount') }}">
-                                @error('discount')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Images</label>
-                                <input type="file" class="form-control @error('images.*') is-invalid @enderror"
-                                    name="images[]" multiple>
-                                @error('images.*')
-                                    <div class="invalid-feedback">You must attach at least 3 images</div>
-                                @enderror
                             </div>
                         </div>
                         <div class="card-footer text-right">
@@ -126,15 +110,6 @@
         // Initialize select2
         $(document).ready(function() {
             $('.select2').select2();
-        });
-    </script>
-    <script>
-        $('form').submit(function() {
-            var imageCount = $('input[type="file"][name="images[]"]').get(0).files.length;
-            if (imageCount < 3) {
-                alert('Please select at least 3 images.');
-                return false; // Prevent form submission
-            }
         });
     </script>
 @endpush

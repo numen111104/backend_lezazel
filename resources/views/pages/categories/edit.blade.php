@@ -34,15 +34,6 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Image</label>
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
-                                @error('image')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Update</button>

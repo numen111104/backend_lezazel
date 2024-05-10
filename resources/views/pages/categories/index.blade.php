@@ -16,7 +16,7 @@
                     <a href="{{ route('categories.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ route('home.index') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></div>
                     <div class="breadcrumb-item">Index Categories</div>
                 </div>
@@ -40,19 +40,17 @@
                             </div>
                             <div class="card-body text-center">
                                 <div class="table-responsive">
+                                    @if ($category->count() > 0)
                                     <table class="table-striped table">
                                         <tr>
+                                            <th>ID</th>
                                             <th>Name</th>
-                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($category as $kategori)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $kategori->name }}</td>
-                                                <td>
-                                                    <img src="{{ $kategori->image }}" alt="{{ $kategori->name }}"
-                                                        style="max-width: 100px;">
-                                                </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('categories.edit', $kategori->id) }}'
@@ -83,6 +81,11 @@
                                 <div class="float-right">
                                     {{ $category->withQueryString()->links() }}
                                 </div>
+                                @else
+                                    <div class="alert alert-danger">
+                                        No data found
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
