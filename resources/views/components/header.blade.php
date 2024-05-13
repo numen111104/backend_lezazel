@@ -210,7 +210,7 @@
                 <a href="#javascript:void(0)" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
-                <a href="{{ route('index') }}" class="dropdown-item has-icon">
+                <a href="{{ route('landing') }}" class="dropdown-item has-icon">
                     <i class="fas fa-home"></i> Landing Page
                 </a>
                 <div class="dropdown-divider"></div>

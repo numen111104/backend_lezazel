@@ -9,7 +9,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HomeDashboardController;
 use App\Http\Controllers\ProductGalleryController;
 
-Route::resource('/', LandingPageController::class);
+
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('home', HomeDashboardController::class);
@@ -19,3 +19,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('galleries', ProductGalleryController::class);
     Route::resource('transactions', TransactionController::class);
 });
+Route::middleware(['auth'])->group(function () {
+    Route::post('/store-review', [LandingPageController::class, 'store'])->name('store-review');
+});
+Route::get('/', [LandingPageController::class, 'index'])->name('landing');

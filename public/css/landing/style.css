@@ -1,4 +1,5 @@
 @import './root.css';
+@import './stars.css';
 
 nav {
     padding: 20px;
@@ -187,11 +188,11 @@ section:last-child {
 .landing-page .bg-img.active {
     width: 100%;
 }
-.landing-page .bg-img1 { background-image: url(../../img/Lezazel.jpg) }
-.landing-page .bg-img2 { background-image: url(../../img/Lezazel1.jpg) }
-.landing-page .bg-img3 { background-image: url(../../img/Lezazel2.jpg) }
-.landing-page .bg-img4 { background-image: url(../../img/Lezazel3.jpg) }
-.landing-page .bg-img5 { background-image: url(../../img/Lezazel4.jpg) }
+.landing-page .bg-img1 { background-image: url(../../img/lezazel.jpg) }
+.landing-page .bg-img2 { background-image: url(../../img/lezazel1.jpg) }
+.landing-page .bg-img3 { background-image: url(../../img/lezazel2.jpg) }
+.landing-page .bg-img4 { background-image: url(../../img/lezazel3.jpg) }
+.landing-page .bg-img5 { background-image: url(../../img/lezazel4.jpg) }
 .landing-page .container > div {
     z-index: 4;
 }
@@ -429,12 +430,12 @@ section:last-child {
     margin-bottom: 16px;
     border-bottom: 2.5px solid #FFFFFF20;
 }
-.form-destination .top button {
+.form-destination .top span {
     font-size: 1.1rem;
     position: relative;
     transition: .3s ease;
 }
-.form-destination .top button::after {
+.form-destination .top span::after {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -445,11 +446,15 @@ section:last-child {
     background-color: var(--white-color);
     transform: scaleX(0);
     transition: .3s ease;
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
 }
-.form-destination .top button.active::after {
+.form-destination .top span.active::after {
     transform: scaleX(1);
 }
-.form-destination .top:hover button:not(:hover) {
+.form-destination .top:hover span:not(:hover) {
     filter: blur(2px);
 }
 .form-destination .bottom {
@@ -462,6 +467,7 @@ section:last-child {
     align-items: center;
     gap: 16px;
     width: 100%;
+    height: 100%;
     max-width: 180px;
 }
 .form-destination h2 {
@@ -487,7 +493,7 @@ section:last-child {
 .form-destination i {
     font-size: 1.2rem;
 }
-.form-destination button {
+.form-destination span {
     cursor: pointer;
     background-color: transparent;
     border: transparent;
@@ -844,8 +850,11 @@ section:last-child {
     border-radius: 50px;
 }
 .fifth-page .card-client > p {
+    height: calc(1.0em * 5);
+    max-height: calc(1.2em * 8);
+    padding: 0;
     line-height: 125%;
-    color: #FFFFFF80;
+    color: #FFFFFF80; /* Maksimum 3 baris */
 }
 .fifth-page .profile {
     width: 100%;
@@ -1142,4 +1151,16 @@ footer .bottom .social-media i:hover {
         flex-direction: column;
         gap: 24px;
     }
+}
+
+@media only screen and (max-width: 500px) {
+     h1 {
+        font-size: 2rem;
+    }
+     p {
+        font-size: .9rem;
+    }
+    .landing-page .page-switch {
+        font-size: 1.8rem;
+        }
 }
