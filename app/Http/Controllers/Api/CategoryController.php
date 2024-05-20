@@ -11,17 +11,31 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function all(Request $request)
+    {
+        $id = $request->input('id');
+        $limit = $request->input('limit', 6);
+        $name = $request->input('name');
+        $show_product = $request->input('show_product');
 
-    public function index(){
-        try {
-            $category = Category::latest()->get();
-            if($category->isEmpty()) {
-                return new ApiResource(false, 'No categories found', null, 404, 'not_found', null);
+        if ($id) {
+            $category = Category::with('products')->find($id);
+            if ($category) {
+                return new ApiResource(true, 'Get category successfully', $category, 200, 'OK');
+            } else {
+                return new ApiResource(false, 'Category not found', null, 404, 'Not Found');
             }
-            return new ApiResource(true, 'Success', $category, 200, 'ok', null);
-        } catch (\Exception $e) {
-            return new ApiResource(false, 'An error occurred while fetching categories', null, 500, 'internal_server_error', null);
         }
+
+        $category = Category::query();
+        if ($name) {
+            $category->where('name', 'like', '%' . $name . '%');
+        }
+
+        if ($show_product) {
+            $category->with('products');
+        }
+
+        return new ApiResource(true, 'Get categories successfully', $category->paginate($limit), 200, 'OK');
     }
-    
 }

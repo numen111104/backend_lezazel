@@ -17,9 +17,7 @@
                 <h2>Frozen Food Lezazel</h2>
                 <p>Dengan harga yang ramah di kantong, daging ayam tulang lunak Lezazel adalah pilihan yang
                     cerdas bagi keluarga, pengusaha kuliner, dan individu yang mencari produk berkualitas tinggi
-                    tanpa harus membayar mahal. Bersiaplah untuk menikmati sensasi rasa dan kualitas sejati dari
-                    daging ayam tulang lunak Lezazel, tanpa perlu khawatirkan tentang harga yang tidak masuk
-                    akal.</p>
+                    tanpa harus membayar mahal.</p>
                 <button
                     onclick="location.href='https://wa.me/628978885868?text=Halo%20admin,%20Saya%20ingin%20pesan%20Lezazel%20Chicken%20Food%20Frozen%20dengan%20rincian%20berikut%3A%0A%0ANama%3A%20(Nama)%0AAlamat%20Lengkap%3A%20(Alamat)%0AMetode%20Pembayaran%3A%20(Metode%20Pembayaran)'">Pesan
                     Sekarang</button>
@@ -29,9 +27,7 @@
             <img src="{{ asset('img/products/prolez-3.jpg') }}">
             <div class="desc">
                 <h2>Rasa yang lezat</h2>
-                <p>Dengan rasa yang memikat, produk Lezazel tidak hanya memenuhi pangsa pasar makanan beku
-                    dengan kualitas terbaik, tetapi juga memberikan pengalaman kuliner yang tak terlupakan.
-                    Setiap gigitan menyajikan kelezatan yang autentik, dengan cita rasa yang seimbang dan
+                <p>Setiap gigitan menyajikan kelezatan yang autentik, dengan cita rasa yang seimbang dan
                     tekstur yang memikat. </p>
                 <button
                     onclick="location.href='https://wa.me/628978885868?text=Halo%20admin,%20Saya%20ingin%20pesan%20Lezazel%20Chicken%20Food%20Frozen%20dengan%20rincian%20berikut%3A%0A%0ANama%3A%20(Nama)%0AAlamat%20Lengkap%3A%20(Alamat)%0AMetode%20Pembayaran%3A%20(Metode%20Pembayaran)'">Pesan
@@ -42,12 +38,12 @@
             <img src="{{ asset('img/products/prolez-4.jpg') }}">
             <div class="desc">
                 <h2>Checkout Sekarang</h2>
-                <p>Segera pesan produk Lezazel Food sekarang! Setelah Anda menyelesaikan proses checkout di
-                    sini, Anda akan diarahkan ke WhatsApp untuk mengirim pesanan Anda langsung kepada kami. Kami
-                    akan dengan senang hati membantu Anda dalam proses pembelian dan pengiriman. Klik tombol di
+                <p>Kami akan dengan senang hati membantu Anda dalam proses pembelian dan pengiriman. Klik tombol di
                     bawah ini untuk mulai memesan produk Lezazel Food Anda sekarang dan nikmati kelezatannya
                     dalam waktu singkat!</p>
-                <button onclick="location.href='https://wa.me/628978885868?text=Halo%20admin,%20Saya%20ingin%20pesan%20Lezazel%20Chicken%20Food%20Frozen%20dengan%20rincian%20berikut%3A%0A%0ANama%3A%20(Nama)%0AAlamat%20Lengkap%3A%20(Alamat)%0AMetode%20Pembayaran%3A%20(Metode%20Pembayaran)'">Pesan Sekarang</button>
+                <button
+                    onclick="location.href='https://wa.me/628978885868?text=Halo%20admin,%20Saya%20ingin%20pesan%20Lezazel%20Chicken%20Food%20Frozen%20dengan%20rincian%20berikut%3A%0A%0ANama%3A%20(Nama)%0AAlamat%20Lengkap%3A%20(Alamat)%0AMetode%20Pembayaran%3A%20(Metode%20Pembayaran)'">Pesan
+                    Sekarang</button>
             </div>
         </div>
     </div>

@@ -7,10 +7,7 @@
                 </div>
                 <div>
                     <p>Dengan bahan dasar ayam pedaging sebagai pilar protein, lezazel tak hanya memberikan
-                        fleksibilitas dinamis, tapi juga kelezatan dalam setiap gigitannya. Sebuah kreasi
-                        kuliner yang hadir sebagai perpaduan harmonis antara kepraktisan dan kesederhanaan,
-                        memudahkan setiap langkah dalam menikmati hidangan yang tak hanya memanjakan lidah,
-                        tetapi juga memenuhi kebutuhan gizi dengan cara yang stylish dan effortless. </p>
+                        fleksibilitas dinamis, tapi juga kelezatan dalam setiap gigitannya.</p>
                 </div>
                 <div><button onclick="window.open('https://www.instagram.com/lezazel.food/', '_blank')">Cek
                         Sekarang</button></div>

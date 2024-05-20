@@ -18,7 +18,7 @@
             <div class="section-header">
                 <h1>Create Product</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ route('home.index') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('products.index') }}">Products</a></div>
                     <div class="breadcrumb-item active">Create</div>
                 </div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -18,35 +19,29 @@ class AuthController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 "name" => "required|string|max:255",
-                "email" => "required|string|email|max:255|unique:users",
-                "password" => "required|string|min:8",
-                "phone" => 'required|string|max:255',
-                "address" => 'required|string|max:255',
+                "username" => "required|string|max:255|unique:users,username",
+                "email" => "required|string|email|max:255|unique:users,email",
+                "phone" => 'nullable|string|max:255|unique:users,phone',
+                "password" => 'required|string|min:8',
             ]);
 
             if ($validator->fails()) {
-                $apiResponse = new ApiResource(false, $validator->errors()->first(), null, 400, 'Bad Request', ['WWW-Authenticate' => 'Bearer']);
-                return $apiResponse->response();
+                throw new ValidationException($validator);
             }
             $user = User::create([
                 'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
-                'password' => bcrypt($request->password),
                 'phone' => $request->phone,
-                'address' => $request->address
+                'password' => bcrypt($request->password),
             ]);
             $token = $user->createToken('auth_token')->plainTextToken;
             return new ApiResource(true, 'User created successfully', [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'phone' => $user->phone,
-                'address' => $user->address,
                 'token' => $token,
                 'token_type' => 'Bearer',
+                'user' => $user,
             ], 201, 'Created', ['WWW-Authenticate' => 'Bearer']);
         } catch (Exception $e) {
-            Log::error('Error registering user: ' . $e->getMessage());
             return new ApiResource(false, "Error registering user: " . $e->getMessage(), null, 500, 'Internal Server Error', ['WWW-Authenticate' => 'Bearer']);
         }
     }
@@ -59,7 +54,7 @@ class AuthController extends Controller
                 'password' => 'required|min:8',
             ]);
             if ($validator->fails()) {
-                return new ApiResource(false, $validator->errors()->first(), null, 422, 'Unprocessable Entity');
+                throw new ValidationException($validator);
             }
             if (!auth()->attempt($request->only('email', 'password'))) {
                 return new ApiResource(false, 'Invalid login details', null, 401, 'Unauthorized', ['WWW-Authenticate' => 'Bearer']);
@@ -68,13 +63,9 @@ class AuthController extends Controller
             if ($user && Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return new ApiResource(true, 'User logged in successfully', [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'phone' => $user->phone,
-                    'address' => $user->address,
                     'token' => $token,
                     'token_type' => 'Bearer',
+                    'user' => $user,
                 ], 200, 'OK', ['WWW-Authenticate' => 'Bearer']);
             } else {
                 return new ApiResource(false, 'Invalid login details', null, 401, 'Unauthorized', ['WWW-Authenticate' => 'Bearer']);

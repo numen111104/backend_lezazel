@@ -2,16 +2,20 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Laravel\Fortify\Fortify;
 use App\Actions\Fortify\CreateNewUser;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\Redirect;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
-use Laravel\Fortify\Fortify;
+use App\Actions\Fortify\UpdateUserProfileInformation;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -51,8 +55,9 @@ class FortifyServiceProvider extends ServiceProvider
            return view('pages.auth.auth-register'); 
         });
 
-        //redirect to /web after login
-        Fortify::redirects('web');
+        Fortify::verifyEmailView(function () {
+            return view('pages.auth.auth-verify-email');
+        });
 
     }
 }

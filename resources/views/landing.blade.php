@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 @include('sections.meta')
+
 <body>
     <nav>
         <div class="nav">
@@ -16,25 +17,40 @@
         </div>
     </nav>
     <ul class="navbar">
-        <li onclick="location.href='{{ route('home.index') }}'">Dashboard</li>
+        @if (auth()->check())
+            @if (auth()->user()->roles === 'ADMIN')
+                <li>Welcome {{ auth()->user()->name }}</li>
+                <li onclick="location.href='{{ route('home.index') }}'">Dashboard</li>
+                <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
+            @else
+                <li>Welcome {{ auth()->user()->name }}</li>
+                <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
+            @endif
+        @else
+            <li onclick="location.href='{{ route('login') }}'">Login</li>
+            <li onclick="location.href='{{ route('register') }}'">Register</li>
+        @endif
     </ul>
 
     <main>
         <!-- landing-page -->
-@include('sections.zero')
+        @include('sections.zero')
         <!-- first-page -->
-@include('sections.first')
+        @include('sections.first')
         <!-- second-page -->
-@include('sections.second')
+        @include('sections.second')
         <!-- third-page -->
-@include('sections.third')
+        @include('sections.third')
         <!-- fourth-page -->
-{{-- @include('sections.fourth') --}}
+        {{-- @include('sections.fourth') --}}
         <!-- fifth-page -->
-@include('sections.fifth')
+        @include('sections.fifth')
+        <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </main>
-{{-- Footer --}}
-@include('sections.footer')
+    {{-- Footer --}}
+    @include('sections.footer')
     <script src="{{ asset('js/landing/index.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -52,7 +68,7 @@
                 0: {
                     items: 1
                 },
-                600: {
+                570: {
                     items: 2
                 },
                 890: {

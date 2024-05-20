@@ -9,8 +9,8 @@
     <div class="footer">
         <div class="top">
             <div class="desc">
-                <img src="{{ asset('img/lezazel_logo.svg') }}">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, rerum.</p>
+                <img src="{{ asset('img/lezazel_logo.svg') }}" height="100">
+                <p>Lezazel Food Chicek</p>
             </div>
             <div class="navigation">
                 <ul>
