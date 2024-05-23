@@ -69,8 +69,8 @@
                         <div class="profile">
                             <img src="{{ asset('img/avatar/avatar-' . rand(1, 5) . '.png') }}">
                             <div class="desc-card">
-                                <h2>{{ $review->name }}</h2>
-                                <p>{{ $review->position }}</p>
+                                <h2>{{ explode(' ', $review->user->name)[0] }}</h2>
+                                <p>{{ $review->user->email }}</p>
                             </div>
                         </div>
                     </div>

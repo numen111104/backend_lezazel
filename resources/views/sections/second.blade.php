@@ -7,12 +7,18 @@
                         <span>Form</span>
                     </div>
                     <div class="bottom">
+                        @if($userReview)
+                            <div class="header" style="color: green; font-weight: bold; text-align: center; padding: 5px">
+                                <i style="font-size: 2.5rem" class="bi bi-check-circle"></i>
+                                <p>Terima Kasih atas komentar Anda!🤩</p>
+                            </div>
+                        @else
                         <span>
                             <div class="header">
                                 <i class="bi bi-person"></i>
-                                <input type="text" placeholder="Nama" name="name">
+                                <input type="text" placeholder="Login Dulu" value="{{ auth()->user() ? auth()->user()->name : ''}}" disabled name="name">
                             </div>
-                            <p>Siapa Nama Anda?</p>
+                            <p>Nama Anda</p>
                         </span>
                         <span>
                             <div class="header">
@@ -55,7 +61,7 @@
                         <span>
                             <div class="header">
                                 <i class="bi bi-chat-right-text-fill"></i>
-                                <input type="textarea" name="comment" placeholder="Komentar">
+                                <input type="textarea" name="comment" placeholder="Komentar" required>
                             </div>
                                 <p>Isi Komentar</p>
                         </span>
@@ -67,6 +73,7 @@
                                 <p>Saya seorang ...</p>
                         </span>
                         <button type="submit"><i class="bi bi-send"></i></button>
+                        @endif
                     </div>
                 </form>
             </div>

@@ -10,13 +10,18 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $reviews = DB::table('reviews')
+        $user = auth()->user();
+        $reviews = Review::with('user') // Memuat relasi user
             ->where('ratings', '>=', 3) // Hanya rating yang lebih dari 3
             ->orderBy('ratings', 'desc')
             ->get();
 
-        return view('landing', compact('reviews'));
+            $userReview = null;
+            $user ? $userReview = Review::where('user_id', $user->id)->first() : null;
+
+        return view('landing', compact('reviews', 'userReview'));
     }
+
 
     public function store(Request $request)
     {
@@ -29,7 +34,7 @@ class LandingPageController extends Controller
         ]);
         $review = new Review;
         $review->user_id = auth()->user()->id;
-        $review->name = $request->name;
+        $review->name = auth()->user()->name;
         $review->ratings = $request->ratings;
         $review->comment = $request->comment;
         $review->position = $request->position;

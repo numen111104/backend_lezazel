@@ -20,4 +20,4 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::resource('transactions', TransactionController::class);
     Route::post('/store-review', [LandingPageController::class, 'store'])->name('store-review');
 });
-Route::get('/', [LandingPageController::class, 'index'])->name('landing')->middleware('auth');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing');
