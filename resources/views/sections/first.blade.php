@@ -47,4 +47,7 @@
             </div>
         </div>
     </div>
+    <button
+        onclick="location.href='https://wa.me/628978885868?text=Halo%20admin,%20Saya%20ingin%20pesan%20Lezazel%20Chicken%20Food%20Frozen%20dengan%20rincian%20berikut%3A%0A%0ANama%3A%20(Nama)%0AAlamat%20Lengkap%3A%20(Alamat)%0AMetode%20Pembayaran%3A%20(Metode%20Pembayaran)'">Pesan
+        Sekarang</button>
 </section>

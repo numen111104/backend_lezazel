@@ -100,10 +100,10 @@
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
                                 <h1 class="display-4 font-weight-bold mb-2">Lezazel Food</h1>
-                                <h5 class="font-weight-normal text-muted-transparent">Banung, Indonesia</h5>
+                                <h5 class="font-weight-normal text-muted-transparent">Jatinangor, Indonesia</h5>
                             </div>
                             Photo by <a class="text-light bb" target="_blank"
-                                href="https://www.instagram.com/lezazel.food?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Mu'adz Hanan</a>
+                                href="https://www.instagram.com/lezazel.food?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Muadz Hanan</a>
                         </div>
                     </div>
                 </div>

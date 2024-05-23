@@ -144,7 +144,7 @@ section:not(.landing-page) {
     padding: 70px 20px;
 }
 section:nth-child(2) {
-    padding: 140px 20px 70px;
+    padding: 140px 20px 50px;
 }
 section:last-child {
     padding: 70px 20px 140px;
@@ -401,6 +401,37 @@ section:last-child {
     color: var(--black-color);
     background-color: white;
     box-shadow: 0 0 20px var(--white-color);
+}
+
+.first-page button {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .first-page  button {
+        width: 100%;
+        display: flex;
+        margin-top: 25px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 8px 42px;
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        color: var(--white-color);
+        border-radius: 10px;
+        background-color: transparent;
+        border: 1px solid var(--white-color);
+        transition: 0.3s ease;
+    }
+    
+    .first-page button:hover {
+        color: var(--black-color);
+        background-color: white;
+        box-shadow: 0 0 20px var(--white-color);
+    }
 }
 
 /* second-page */
