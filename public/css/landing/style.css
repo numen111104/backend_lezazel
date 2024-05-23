@@ -154,7 +154,7 @@ section:last-child {
 .landing-page {
     width: 100%;
     height: min(calc(100vh + 100px), 1080px);
-    background-image: url(../../img/Lezazel.jpg);
+    background-image: url(../../img/lezazel.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
