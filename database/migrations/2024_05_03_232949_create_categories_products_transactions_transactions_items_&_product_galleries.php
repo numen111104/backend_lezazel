@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        
+
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -39,17 +39,16 @@ return new class extends Migration
             $table->string('payment')->default('MANUAL');
             $table->timestamps();
             $table->softDeletes();
-
         });
 
         Schema::create('transactions_items', function (Blueprint $table) {
-           $table->id();
-           $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-           $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-           $table->foreignId('transaction_id')->constrained('transactions')->onDelete('cascade');
-           $table->integer('quantity');
-           $table->timestamps();
-           $table->softDeletes();
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->foreignId('transaction_id')->constrained('transactions')->onDelete('cascade');
+            $table->integer('quantity');
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('product_galleries', function (Blueprint $table) {
@@ -58,7 +57,6 @@ return new class extends Migration
             $table->string('url');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 
@@ -67,10 +65,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
-        Schema::dropIfExists('products');
-        Schema::dropIfExists('transactions');
-        Schema::dropIfExists('transactions_items');
         Schema::dropIfExists('product_galleries');
+        Schema::dropIfExists('transactions_items');
+        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
     }
 };
