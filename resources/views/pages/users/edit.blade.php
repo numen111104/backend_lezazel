@@ -8,7 +8,7 @@
             <div class="section-header">
                 <h1>Edit User</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ route('home.index') }}">Dashboard</a></div>
                     <div class="breadcrumb-item active"><a href="{{ route('users.index') }}">Users</a></div>
                     <div class="breadcrumb-item">Edit User</div>
                 </div>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label>Roles</label>
                                 <select class="form-control @error('roles') is-invalid @enderror" name="roles">
-                                <option value="ADMIN" {{ old('roles', $user->roles) == 'admin' ? 'selected' : '' }}>
+                                    <option value="ADMIN" {{ old('roles', $user->roles) == 'admin' ? 'selected' : '' }}>
                                         Admin</option>
                                     <option value="USER" {{ old('roles', $user->roles) == 'user' ? 'selected' : '' }}>
                                         User</option>
