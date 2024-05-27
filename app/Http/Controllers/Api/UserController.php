@@ -41,6 +41,7 @@ class UserController extends Controller
             $data =  $request->validate([
                 'name' => 'required|string|max:255',
                 'username' => 'required|string|max:255|unique:users,username,' . $request->user()->id,
+                'gender' => 'required|string|max:255|in:Male,Female',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $request->user()->id,
                 'password' => 'required|string|min:8',
                 'phone' => 'nullable|string|max:255',

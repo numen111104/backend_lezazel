@@ -43,12 +43,15 @@ class UserController extends Controller
            'password' => 'required|string|min:8|confirmed',
            'username' => 'required|string|max:255',
            'roles' => 'required|string|max:255',
+           'phone' => 'required|string|max:255',
+           'gender' => 'required|string|max:255|in:Male,Female',
         ]);
 
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->gender = $request->gender;
         $user->password = Hash::make($request->password);
         $user->username = $request->username;
         $user->roles = $request->roles;
@@ -84,6 +87,8 @@ class UserController extends Controller
            'email' => ['required', 'string', 'email', 'max:255'],
            'username' => ['required', 'string', 'max:255'],
            'roles' => ['required', 'string', 'max:255'],
+           'phone' => ['required', 'string', 'max:255'],
+           'gender' => ['required', 'string', 'max:255', 'in:Male,Female'],
            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -91,6 +96,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->gender = $request->gender;
         $user->roles = $request->roles;
         $user->username = $request->username;
         $user->save();

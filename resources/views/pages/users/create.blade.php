@@ -24,15 +24,30 @@
                             <h4>Add User</h4>
                         </div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') }}">
-                                @error('name')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Gender</label>
+                                    <select class="form-control @error('gender') is-invalid @enderror" name="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    @error('gender')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>

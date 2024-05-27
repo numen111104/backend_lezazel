@@ -58,6 +58,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Gender</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Username</th>
@@ -69,6 +70,7 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}
                                                 </td>
+                                                <td>{{ $user->gender }}</td>
                                                 <td>
                                                     {{ $user->email }}
                                                 </td>

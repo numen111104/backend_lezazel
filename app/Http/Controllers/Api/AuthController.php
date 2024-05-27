@@ -21,6 +21,7 @@ class AuthController extends Controller
                 "name" => "required|string|max:255",
                 "username" => "required|string|max:255|unique:users,username",
                 "email" => "required|string|email|max:255|unique:users,email",
+                "gender" => "required|string|max:255|in:Male,Female",
                 "phone" => 'nullable|string|max:255|unique:users,phone',
                 "password" => 'required|string|min:8',
             ]);
@@ -28,13 +29,15 @@ class AuthController extends Controller
             if ($validator->fails()) {
                 throw new ValidationException($validator);
             }
-            $user = User::create([
+            User::create([
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'gender' => $request->gender,
                 'password' => bcrypt($request->password),
             ]);
+            $user = User::where('email', $request->email)->first();
             $token = $user->createToken('auth_token')->plainTextToken;
             return new ApiResource(true, 'User created successfully', [
                 'token' => $token,
