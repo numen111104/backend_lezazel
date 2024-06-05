@@ -28,7 +28,7 @@ class UserController extends Controller
         return new ApiResource(
             true,
             'User fetched successfully',
-            $user,
+            ['user' => $user],
             200,
             'Ok',
             ['WWW-Authenticate' => 'Bearer']
@@ -53,7 +53,7 @@ class UserController extends Controller
             $user = Auth::user();
             $user->update($data);
 
-            return new ApiResource(true, 'User updated successfully', $user, 200, 'Ok', ['WWW-Authenticate' => 'Bearer']);
+            return new ApiResource(true, 'User updated successfully', ['user' => $user], 200, 'Ok', ['WWW-Authenticate' => 'Bearer']);
         } catch (\Throwable $th) {
             return new ApiResource(false, $th->getMessage(), null, 500, 'Internal Server Error', ['WWW-Authenticate' => 'Bearer']);
         }

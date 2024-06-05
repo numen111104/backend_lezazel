@@ -56,6 +56,18 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control @error('gender') is-invalid @enderror" name="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                @error('gender')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Username</label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror"
                                     name="username" value="{{ old('username', $user->username) }}">
@@ -79,32 +91,30 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label>Password</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
-                        @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        name="password">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Password Confirmation</label>
+                                    <input type="password" class="form-control" name="password_confirmation">
+                                </div>
                             </div>
-                        @enderror
-                    </div>
-                    <div class="form-group col-6">
-                        <label>Password Confirmation</label>
-                        <input type="password" class="form-control" name="password_confirmation">
-                    </div>
+                        </div>
+                        <div class="card-footer text-right">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="card-footer text-right">
-                <button class="btn btn-primary">Submit</button>
-            </div>
-            </form>
-    </div>
-    </div>
-    </section>
+
+        </section>
     </div>
 @endsection
