@@ -39,7 +39,7 @@
             </div>
             <div class="page-container">
                 <div>
-                    <h1>Kesehatan</h1>
+                    <h1>Health</h1>
                 </div>
                 <div>
                     <p>Daging ayam tulang lunak Lezazel tidak hanya memanjakan lidah Anda dengan kelezatan,

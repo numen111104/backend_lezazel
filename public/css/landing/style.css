@@ -408,7 +408,7 @@ section:last-child {
 }
 
 @media screen and (max-width: 720px) {
-    .first-page  button {
+    .first-page button {
         width: 100%;
         display: flex;
         margin-top: 25px;
@@ -426,7 +426,7 @@ section:last-child {
         border: 1px solid var(--white-color);
         transition: 0.3s ease;
     }
-    
+
     .first-page button:hover {
         color: var(--black-color);
         background-color: white;
@@ -934,6 +934,7 @@ footer {
     align-items: center;
 }
 .subscribe h1 {
+    padding: 0 24px;
     margin-bottom: 32px;
     font-size: 3rem;
     color: var(--white-color);

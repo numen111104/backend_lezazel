@@ -1,7 +1,7 @@
         <section class="second-page" id="review">
             <h1>Berikan Testimoni Anda!</h1>
             <div class="form-destination">
-                <form action={{ route("store-review") }} method="POST">
+                <form action={{ route("review") }} method="POST">
                     @csrf
                     <div class="top">
                         <span>Form</span>
