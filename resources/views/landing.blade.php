@@ -19,11 +19,11 @@
     <ul class="navbar">
         @if (auth()->check())
             @if (auth()->user()->roles === 'ADMIN')
-                <li>Welcome {{ $username }}</li>
+                <li>Welcome {{ explode(' ', auth()->user()->name)[0] }}</li>
                 <li onclick="location.href='{{ route('home.index') }}'">Dashboard</li>
                 <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
             @else
-                <li>Welcome {{ $username }}</li>
+                <li>Welcome {{ explode(' ', auth()->user()->name) }}</li>
                 <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
             @endif
         @else
