@@ -23,7 +23,7 @@
                 <li onclick="location.href='{{ route('home.index') }}'">Dashboard</li>
                 <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
             @else
-                <li>Welcome {{ explode(' ', auth()->user()->name) }}</li>
+                <li>Welcome {{ explode(' ', auth()->user()->name)[0] }}</li>
                 <li onclick="document.getElementById('logoutForm').submit()">Logout</li>
             @endif
         @else
