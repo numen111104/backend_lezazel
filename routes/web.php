@@ -11,9 +11,9 @@ use App\Http\Controllers\ProductGalleryController;
 
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('store-review', [LandingPageController::class, 'store'])->name('review');
-})->middleware(['verified'])->prefix('dashboard')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('store-review', [LandingPageController::class, 'store'])->name('review')->middleware('verified');
+})->prefix('dashboard')->group(function () {
     Route::resource('home', HomeDashboardController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
