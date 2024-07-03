@@ -65,12 +65,12 @@
                                     <i class="bi bi-star"></i>
                                 </div>
                         @endswitch
-                        <p>{{ $review->comment }}</p>
+                        <p>{{ Str::limit($review->comment, 80) }}</p>
                         <div class="profile">
                             <img src="{{ asset('img/avatar/avatar-' . rand(1, 5) . '.png') }}">
                             <div class="desc-card">
                                 <h2>{{ explode(' ', $review->user->name)[0] }}</h2>
-                                <p>{{ $review->user->email }}</p>
+                                <p>{{ $review->position }}</p>
                             </div>
                         </div>
                     </div>
